@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %} ferdi sehife  {% endblock %}    
+
+{% block body %} 
+<h1>  {{stud.name | upper}} haqqinda</h1> 
+
+
+<div class="d-flex">
+    <div class="maintitle neumorphic outset bg-green text-white">Telebe</div>
+</div>
+<div class="d-flex w-80">
+    
+    {% for key,value in stud.items() %}
+        <div class="card">
+            <div class="product neumorphic ridge">
+                <a href="{{ url_for('stud', id=stud.id) }}">
+                    <div class="product-image"><img src="{{ stud.image }}"  alt="{{stud.id}}" />
+                    </div>
+                </a>
+                
+                <div class="cart">
+                    <a href="{{ url_for('stud', id=stud.id) }}">
+                    <div class="price float-left">{{stud.name |upper}} {{stud.surname | upper}}</div>
+                    <br>
+                    {% if stud.bio %}
+                        <div class="bio_s">{{telebe.bio }}</div>
+                    {%else %}
+                        <div class="bio_s">I'm a student at Tech academy</div>
+                        
+                    {% endif %}
+                </a>
+                
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+</div><br /><br /><br />
+{% endblock %}    

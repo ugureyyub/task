@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %} Telebe sehifesi  {% endblock %}    
+{% block body %} <h1>Telebe sehifesine xos gelmisiniz!</h1> 
+
+
+<div class="d-flex">
+    <div class="maintitle neumorphic outset bg-green text-white">IT Academy</div>
+</div>
+<div class="d-flex w-80">
+    
+    {% for student in students %}
+        {% if  student.status == True %}
+            <div class="card">
+                <div class="product neumorphic ridge">
+                    <a href="{{ url_for('students', id=student.id) }}">
+                        <div class="product-image"><img src="{{ student.image }}"  alt="{{student.id}}" />
+                        </div>
+                    </a>
+                    
+                    <div class="cart">
+                        <a href="{{ url_for('students', id=student.id) }}">
+                        <div class="price float-left">{{student.name |upper}} {{student.surname | upper}}</div>
+                        <br>
+                        {% if  student.bio %}
+                           <div class="bio_s">{{student.bio }}</div>
+                        {%else %}
+                            <div class="bio_s">I'm a student at Tech academy</div>
+                            
+                        {% endif %}
+                    </a>
+                    
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    
+</div><br /><br /><br />
+{% endblock %}    
